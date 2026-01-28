@@ -2,20 +2,29 @@ package com.RESTAPI.REST_Template.Model;
 
 import jakarta.persistence.*;
 
-@Entity
+@Entity  //→ tells JPA/Hibernate that this class represents a table in the database.
 @Table(name = "users") //auto table create kore nibe
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long voterId;
+    @Column(name = "Voter_ID")
+    private Long voterId;
 
-    String name;
+    //nullable = false → this field cannot be null (required field)
+    //unique = true → only unique values allowed in this column
+    //length = 100 → maximum characters for String columns
+    @Column(nullable = false, length = 100)
+    private String name;
 
-    int age;
+    @Column(nullable = false)
+    private int age;
 
-    String email;
+    @Column(nullable = false,unique = true, length = 150)
+    private String email;
+//field access modifier here is private
+
+
     //setter and getter
-
     public Long getVoterId() {
         return voterId;
     }
