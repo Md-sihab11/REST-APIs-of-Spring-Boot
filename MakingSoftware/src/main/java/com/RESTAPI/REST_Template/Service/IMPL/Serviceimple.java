@@ -1,16 +1,14 @@
-package com.RESTAPI.MakingSoftware.Service.IMPL;
+package com.RESTAPI.REST_Template.Service.IMPL;
 
-import com.RESTAPI.MakingSoftware.DTO.UserRequestDto;
-import com.RESTAPI.MakingSoftware.Model.User;
-import com.RESTAPI.MakingSoftware.Repository.SimpleRepository;
-import com.RESTAPI.MakingSoftware.Service.ServiceLayer;
+import com.RESTAPI.REST_Template.DTO.UserRequestDto;
+import com.RESTAPI.REST_Template.Model.User;
+import com.RESTAPI.REST_Template.Repository.SimpleRepository;
+import com.RESTAPI.REST_Template.Service.ServiceLayer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
 @Service
 public class Serviceimple implements ServiceLayer {
 

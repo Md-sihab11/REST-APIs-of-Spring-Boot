@@ -1,4 +1,4 @@
-package com.RESTAPI.MakingSoftware.Exception;
+package com.RESTAPI.REST_Template.Exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

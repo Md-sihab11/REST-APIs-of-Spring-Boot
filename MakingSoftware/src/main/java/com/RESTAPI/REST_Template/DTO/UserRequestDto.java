@@ -1,4 +1,4 @@
-package com.RESTAPI.MakingSoftware.DTO;
+package com.RESTAPI.REST_Template.DTO;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;

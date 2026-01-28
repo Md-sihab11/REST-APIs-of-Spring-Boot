@@ -1,11 +1,8 @@
-package com.RESTAPI.MakingSoftware.Repository;
+package com.RESTAPI.REST_Template.Repository;
 
-import com.RESTAPI.MakingSoftware.DTO.UserRequestDto;
-import com.RESTAPI.MakingSoftware.Model.User;
+import com.RESTAPI.REST_Template.Model.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
-
-import java.util.Optional;
 
 @Repository
 public interface SimpleRepository extends JpaRepository<User, Integer> {

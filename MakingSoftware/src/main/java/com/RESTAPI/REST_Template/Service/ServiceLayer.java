@@ -1,6 +1,6 @@
-package com.RESTAPI.MakingSoftware.Service;
+package com.RESTAPI.REST_Template.Service;
 
-import com.RESTAPI.MakingSoftware.DTO.UserRequestDto;
+import com.RESTAPI.REST_Template.DTO.UserRequestDto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 

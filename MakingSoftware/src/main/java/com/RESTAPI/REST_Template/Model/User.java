@@ -1,4 +1,4 @@
-package com.RESTAPI.MakingSoftware.Model;
+package com.RESTAPI.REST_Template.Model;
 
 import jakarta.persistence.*;
 

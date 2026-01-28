@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class BackendCoreStarter {
+public class RestApiTemplateApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(BackendCoreStarter.class, args);
+		SpringApplication.run(RestApiTemplateApplication.class, args);
 	}
 
 }

@@ -1,11 +1,10 @@
-package com.RESTAPI.MakingSoftware.Controller;
+package com.RESTAPI.REST_Template.Controller;
 
 
-import com.RESTAPI.MakingSoftware.DTO.UserRequestDto;
-import com.RESTAPI.MakingSoftware.Service.ServiceLayer;
+import com.RESTAPI.REST_Template.DTO.UserRequestDto;
+import com.RESTAPI.REST_Template.Service.ServiceLayer;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
