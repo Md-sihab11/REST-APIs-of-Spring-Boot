@@ -1,48 +1,46 @@
 package com.RESTAPI.REST_Template.Controller;
 
 
-import com.RESTAPI.REST_Template.DTO.UserRequestDto;
-import com.RESTAPI.REST_Template.Service.ServiceLayer;
+import com.RESTAPI.REST_Template.Model.User;
+import com.RESTAPI.REST_Template.Service.IMPL.Serviceimple;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
 @RestController
-@RequestMapping("/NiceWeb")
+@RequestMapping("/users")
 public class SimpleController {
-    @Autowired
-    private ServiceLayer serviceLayer;
 
-    @GetMapping("/hello")
-    public String hello() {
-        return serviceLayer.hello();
+    private final Serviceimple userService;
+
+    public SimpleController(Serviceimple userService) {
+        this.userService = userService;
     }
 
-    @GetMapping("/User/{id}")
-    public ResponseEntity<UserRequestDto> getUser(@PathVariable int id) {
-        return serviceLayer.getUser(id);
-    }
-
-    @GetMapping("/search")
-    public ResponseEntity<UserRequestDto> search(@RequestParam String name) {
-        return serviceLayer.search(name);
-    }
-
+    // ADD USER
     @PostMapping("/add")
-    public ResponseEntity<UserRequestDto>  add(@RequestBody @Valid UserRequestDto dto) {
-        return  serviceLayer.add(dto);
+    public User addUser(@Valid @RequestBody User user) {
+        return userService.addUser(user);
     }
 
+    // GET USER
+    @GetMapping("/{id}")
+    public User getUser(@PathVariable Long id) {
+        return userService.getUser(id);
+    }
+
+    // UPDATE USER
     @PutMapping("/update/{id}")
-    public ResponseEntity<UserRequestDto> update(@PathVariable int id, @RequestBody @Valid UserRequestDto dto) {
-        return serviceLayer.update(id, dto);
+    public User updateUser(
+            @PathVariable Long id,
+            @Valid @RequestBody User user
+    ) {
+        return userService.updateUser(id, user);
     }
 
+    // DELETE USER
     @DeleteMapping("/delete/{id}")
-    public ResponseEntity<UserRequestDto> delete(@PathVariable int id) {
-        return serviceLayer.delete(id);
+    public String deleteUser(@PathVariable Long id) {
+        userService.deleteUser(id);
+        return "User deleted successfully";
     }
-
 }

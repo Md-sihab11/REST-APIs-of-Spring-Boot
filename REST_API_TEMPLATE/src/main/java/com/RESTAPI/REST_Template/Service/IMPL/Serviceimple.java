@@ -1,108 +1,49 @@
 package com.RESTAPI.REST_Template.Service.IMPL;
 
-import com.RESTAPI.REST_Template.DTO.UserRequestDto;
+
 import com.RESTAPI.REST_Template.Model.User;
 import com.RESTAPI.REST_Template.Repository.SimpleRepository;
 import com.RESTAPI.REST_Template.Service.ServiceLayer;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class Serviceimple implements ServiceLayer {
 
-    @Autowired
-    private SimpleRepository simpleRepository;
+    private final SimpleRepository userRepository;
 
-    @Override
-    public String hello() {
-        return "hello, I am from Service Layer";
+    public Serviceimple(SimpleRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     @Override
-    public ResponseEntity<UserRequestDto> getUser(int id) {
+    public User addUser(User user) {
+        return userRepository.save(user);
+    }
 
-        User user = simpleRepository.findById(id).orElse(null);
+    @Override
+    public User getUser(Long id) {
+        return userRepository.findById(id).orElse(null);
+    }
 
-        if (user == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+    @Override
+    public User updateUser(Long id, User user) {
+
+        Optional<User> existing = userRepository.findById(id);
+
+        if (existing.isPresent()) {
+            User u = existing.get();
+            u.setName(user.getName());
+            u.setAge(user.getAge());
+            u.setEmail(user.getEmail());
+            return userRepository.save(u);
         }
-
-        UserRequestDto dto = new UserRequestDto();
-        dto.setName(user.getName());
-        dto.setAge(user.getAge());
-        dto.setEmail(user.getEmail());
-
-        return ResponseEntity.ok(dto);
+        return null;
     }
 
     @Override
-    public ResponseEntity<UserRequestDto> add(UserRequestDto dto) {
-
-        User user = new User();
-        user.setName(dto.getName());
-        user.setAge(dto.getAge());
-        user.setEmail(dto.getEmail());
-
-        User savedUser = simpleRepository.save(user);
-
-        UserRequestDto res = new UserRequestDto();
-        res.setName(savedUser.getName());
-        res.setAge(savedUser.getAge());
-        res.setEmail(savedUser.getEmail());
-
-        return ResponseEntity.status(HttpStatus.CREATED).body(res);
-    }
-
-    @Override
-    public ResponseEntity<UserRequestDto> delete(int id) {
-
-        if (!simpleRepository.existsById(id)) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
-
-        simpleRepository.deleteById(id);
-        return ResponseEntity.noContent().build();
-    }
-
-    @Override
-    public ResponseEntity<UserRequestDto> search(String name) {
-
-        User user = simpleRepository.findByName(name);
-
-        if (user == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
-
-        UserRequestDto dto = new UserRequestDto();
-        dto.setName(user.getName());
-        dto.setAge(user.getAge());
-        dto.setEmail(user.getEmail());
-
-        return ResponseEntity.ok(dto);
-    }
-
-    @Override
-    public ResponseEntity<UserRequestDto> update(int id, UserRequestDto dto) {
-
-        User user = simpleRepository.findById(id).orElse(null);
-
-        if (user == null) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
-        }
-
-        user.setName(dto.getName());
-        user.setAge(dto.getAge());
-        user.setEmail(dto.getEmail());
-
-        User updated = simpleRepository.save(user);
-
-        UserRequestDto res = new UserRequestDto();
-        res.setName(updated.getName());
-        res.setAge(updated.getAge());
-        res.setEmail(updated.getEmail());
-
-        return ResponseEntity.ok(res);
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
     }
 }

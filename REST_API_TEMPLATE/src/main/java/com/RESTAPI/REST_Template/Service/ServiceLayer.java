@@ -1,18 +1,14 @@
 package com.RESTAPI.REST_Template.Service;
 
-import com.RESTAPI.REST_Template.DTO.UserRequestDto;
-import org.springframework.http.ResponseEntity;
+
+import com.RESTAPI.REST_Template.Model.User;
 import org.springframework.stereotype.Service;
 
 @Service
 public interface ServiceLayer {
 
-    String hello();
-
-    ResponseEntity<UserRequestDto> getUser(int id);
-    ResponseEntity<UserRequestDto> search(String name);
-    ResponseEntity<UserRequestDto> add(UserRequestDto dto);
-    ResponseEntity<UserRequestDto> update(int id, UserRequestDto dto);
-    ResponseEntity<UserRequestDto> delete(int id);
-    //String addUser(UserRequestDto dto);   // Service only sees DTO
+    User addUser(User user);
+    User getUser(Long id);
+    User updateUser(Long id, User user);
+    void deleteUser(Long id);
 }
