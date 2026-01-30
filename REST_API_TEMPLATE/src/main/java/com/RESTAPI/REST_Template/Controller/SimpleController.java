@@ -4,14 +4,17 @@ package com.RESTAPI.REST_Template.Controller;
 import com.RESTAPI.REST_Template.Model.User;
 import com.RESTAPI.REST_Template.Service.IMPL.Serviceimple;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/users")
 public class SimpleController {
 
+    //Here I can Also use Autowired
     private final Serviceimple userService;
 
+    @Autowired
     public SimpleController(Serviceimple userService) {
         this.userService = userService;
     }
