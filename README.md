@@ -9,13 +9,13 @@ REST_API_TEMPLATE/
 │   ├─ main/  
 │   │   ├─ java/com/RESTAPI/REST_Template/  
 │   │   │   ├─ Controller/  
-│   │   │   ├─ DTO/  
+│   │   │   
 │   │   │   ├─ Model/  
 │   │   │   ├─ Repository/  
 │   │   │   └─ Service/  
 │   │   └─ resources/   
 │   │       ├─ application.properties  
-│   │       └─ static/  (if any)  
+│   │       └─ static
 │   │  
 │   └─ test/   
 │  
